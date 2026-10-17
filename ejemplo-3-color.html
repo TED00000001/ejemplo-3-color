@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 3 - No depender solo del color | ejemplo-3-color</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #F5F5F5; color: #1F1F1F; margin: 0; padding: 20px; }
+    .comparar { display: flex; flex-wrap: wrap; gap: 20px; }
+    .tarjeta { background: white; border-radius: 10px; padding: 16px; width: 320px; }
+    .mal { border-top: 8px solid #B3261E; }
+    .bien { border-top: 8px solid #2E7D32; }
+    li { font-size: 18px; margin: 10px 0; list-style: none; }
+    ul { padding: 0; }
+    .punto { display: inline-block; width: 18px; height: 18px; border-radius: 50%; vertical-align: middle; }
+    .verde { background: #2E7D32; }
+    .rojo { background: #B3261E; }
+    .aprobado { color: #2E7D32; font-weight: bold; }
+    .desaprobado { color: #B3261E; font-weight: bold; }
+    .sin-color { filter: grayscale(1); }
+    #btn-gris { font-size: 18px; padding: 10px 16px; margin-bottom: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <p><small>Carpeta: ejemplo-3-color</small></p>
+  <h1>Ejemplo 3: no depender solo del color</h1>
+  <p>El color puede ayudar, pero no debe ser la única pista para distinguir los estados.</p>
+  <button id="btn-gris">Ver sin colores</button>
+  <div class="comparar" id="zona">
+    <div class="tarjeta mal">
+      <h2>Así NO</h2>
+      <ul>
+        <li><span class="punto verde"></span> Matemática</li>
+        <li><span class="punto rojo"></span> Física</li>
+        <li><span class="punto verde"></span> Historia</li>
+      </ul>
+    </div>
+    <div class="tarjeta bien">
+      <h2>Así SÍ</h2>
+      <ul>
+        <li><span class="punto verde"></span> Matemática: <span class="aprobado">Aprobado</span></li>
+        <li><span class="punto rojo"></span> Física: <span class="desaprobado">Desaprobado</span></li>
+        <li><span class="punto verde"></span> Historia: <span class="aprobado">Aprobado</span></li>
+      </ul>
+    </div>
+  </div>
+  <p>En gris, los puntos de la tarjeta roja se ven iguales; en la verde se sigue leyendo «Desaprobado» en Física. Prueba quitar esa palabra para comparar.</p>
+  <script>
+    var boton = document.getElementById('btn-gris');
+    var zona = document.getElementById('zona');
+    boton.addEventListener('click', function () {
+      zona.classList.toggle('sin-color');
+      if (zona.classList.contains('sin-color')) {
+        boton.textContent = 'Ver con colores';
+      } else {
+        boton.textContent = 'Ver sin colores';
+      }
+    });
+  </script>
+</body>
+</html>
